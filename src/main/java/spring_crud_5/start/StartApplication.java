@@ -92,9 +92,11 @@ public class StartApplication implements CommandLineRunner{
 		public void customOrderProductTest(){
 			System.out.println("------------------------------------------------------------------------");
 			System.out.println("Product: ");
-			Product p1 = new Product("Pasta", 2, 2);
+			Product p1 = new Product("Pasta", 2, 25);
 			Product p2 = new Product("Rice", 1, 5);
 			Product p3 = new Product("Meat", 3, 15);
+
+			System.out.println(p1.getFullPrice(true));
 
 			pService.save(p1);
 			pService.save(p2);
@@ -134,15 +136,26 @@ public class StartApplication implements CommandLineRunner{
 			oService.save(o1);
 			oService.save(o2);
 
+			System.out.println(o1);
+			System.out.println(o2);
+
+			int orderWithIva = o1.getFullPrice(true);
+			int orderWithoutIva = o1.getFullPrice(false);
+
 			try {
-				System.out.println(o1);
-				System.out.println(o2);
+				System.out.println("Order with iva, full price:");
+				System.out.println(orderWithIva);
+				System.out.println("Order without iva, full price:");
+				System.out.println(orderWithoutIva);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
+		
 			
-			
+
+
+
 
 
 

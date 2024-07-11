@@ -55,11 +55,19 @@ public class Order {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
-
+    /* 
     public int getFullPrice(boolean vat) {
         return products.stream()
                 .mapToInt(product -> product.getFullPrice(vat))
                 .sum();
+    }
+    *///TODO provo a cambiare questo con un altro:
+    public int getFullPrice(boolean vat) {
+        int totalPrice = 0;
+        for (Product product : products) {
+            totalPrice += product.getFullPrice(vat);
+        }
+        return totalPrice;
     }
 
     public void addProduct(Product p){
@@ -68,7 +76,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order [id=" + id + ", customer=" + customer + ", products=" + products + "]";
+        return "Order [id=" + id + ", customer=" + customer.getName() + ", products=" + products + "]";
     }
 
     

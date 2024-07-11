@@ -29,7 +29,8 @@ public class Product {
     
     public int getFullPrice(boolean vatIncluded) {
         if (vatIncluded) {
-            return (int) (price * (1 + (vat / 100.0)));
+            double total = price * (1 + (double) vat / 100);
+            return (int) Math.round(total);
         } else {
             return price;
         }

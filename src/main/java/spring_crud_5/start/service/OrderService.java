@@ -1,6 +1,7 @@
 package spring_crud_5.start.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,8 @@ public class OrderService {
         return repo.findAll();
     }
 
-    public void getOrderByID(int id){
-        repo.findById(id).orElse(null);
+    public Optional<Order> getOrderByID(int id){
+        return repo.findById(id);
     }
 
     public void deleteByID(int id){
