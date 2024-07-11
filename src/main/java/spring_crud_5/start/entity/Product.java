@@ -27,8 +27,12 @@ public class Product {
     }
 
     
-    public int getFullPrice(boolean vat) {
-        return vat ? price + (price * this.vat / 100) : price;
+    public int getFullPrice(boolean vatIncluded) {
+        if (vatIncluded) {
+            return (int) (price * (1 + (vat / 100.0)));
+        } else {
+            return price;
+        }
     }
 
 

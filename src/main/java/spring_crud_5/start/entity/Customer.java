@@ -1,9 +1,12 @@
 package spring_crud_5.start.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Customer {
@@ -16,6 +19,9 @@ public class Customer {
     String lastName;
     String email;
     String phone;
+
+    @OneToMany(mappedBy = "customer")
+    List<Order> orders;
     
     
     public Customer() {
@@ -80,11 +86,27 @@ public class Customer {
         this.phone = phone;
     }
 
+    
+
 
     @Override
     public String toString() {
         return "\nCustomer \n[id=" + id + ", \nname=" + name + ", \nlastName=" + lastName + ", \nemail=" + email + ", \nphone="
                 + phone + "\n]";
+    }
+
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public void addOrder(Order o){
+        orders.add(o);
     }
 
     
